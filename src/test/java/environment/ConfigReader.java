@@ -18,9 +18,9 @@ public class ConfigReader {
             Properties properties = new Properties();
             properties.load(inputStream);
             config.put(fileName, properties);
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -31,13 +31,13 @@ public class ConfigReader {
         }
 
         String value = config.get(fileName).getProperty(key);
-        if (value != null) {
+        if(value != null) {
             return value;
         }
-        return  System.getenv(key);
+        return System.getenv(key);
     }
 
-    protected static String getValue(String key){
+    protected static String getValue(String key) {
         return getValue(key, defaultFileName);
     }
 }
