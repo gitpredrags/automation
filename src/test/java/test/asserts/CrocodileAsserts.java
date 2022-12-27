@@ -3,6 +3,7 @@ package test.asserts;
 import data.models.*;
 import org.testng.asserts.SoftAssert;
 import test.common.TestBase;
+import test.suite.CrocodileTests;
 
 public class CrocodileAsserts extends TestBase {
     public SoftAssert softAssert = new SoftAssert();
@@ -30,7 +31,7 @@ public class CrocodileAsserts extends TestBase {
     }
 
     public void assertPrivateCrocodileById (GetPrivateCrocodileByIdResponse getPrivateCrocodileByIdResponse){
-        softAssert.assertEquals(getPrivateCrocodileByIdResponse.getId().toString(), privateID, "ID don't match");
+        softAssert.assertEquals(getPrivateCrocodileByIdResponse.getId().toString(), CrocodileTests.testId, "ID don't match");
         softAssert.assertAll();
     }
 
@@ -41,7 +42,7 @@ public class CrocodileAsserts extends TestBase {
         softAssert.assertAll();
     }
 
-    public void assertUpdateCrocodile (UpdateCrocodileResponse updateCrocodileResponse, UpdateCrocodileRequest updateCrocodileRequest){
+    public void assertUpdateCrocodile (UpdateCrocodileResponse updateCrocodileResponse, CreateCrocodileRequest updateCrocodileRequest){
         softAssert.assertEquals(updateCrocodileResponse.getName(), updateCrocodileRequest.getName(), "Name didn't match");
         softAssert.assertEquals(updateCrocodileResponse.getSex(), updateCrocodileRequest.getSex(), "Sex didn't match");
         softAssert.assertEquals(updateCrocodileResponse.getDateOfBirth(), updateCrocodileRequest.getDateOfBirth(), "Date if birth didn't match");
