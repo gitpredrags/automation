@@ -16,7 +16,7 @@ public class CrocodileAsserts extends TestBase {
     }
 
     public void assertCrocodileById (GetPublicCrocodileByIdResponse getPublicCrocodileByIdResponse){
-        softAssert.assertEquals(getPublicCrocodileByIdResponse.getId().toString(), publicID , "ID don't match");
+        softAssert.assertEquals(getPublicCrocodileByIdResponse.getId().toString(), CrocodileTests.publicID , "ID don't match");
            softAssert.assertAll();
     }
 
@@ -30,8 +30,11 @@ public class CrocodileAsserts extends TestBase {
         softAssert.assertAll();
     }
 
-    public void assertPrivateCrocodileById (GetPrivateCrocodileByIdResponse getPrivateCrocodileByIdResponse){
+    public void assertPrivateCrocodileById (GetPrivateCrocodileByIdResponse getPrivateCrocodileByIdResponse, CreateCrocodileRequest createCrocodileRequest){
         softAssert.assertEquals(getPrivateCrocodileByIdResponse.getId().toString(), CrocodileTests.testId, "ID don't match");
+        softAssert.assertEquals(getPrivateCrocodileByIdResponse.getName(),createCrocodileRequest.getName(), "Name didn't match");
+        softAssert.assertEquals(getPrivateCrocodileByIdResponse.getSex(), createCrocodileRequest.getSex(), "Sex didn't match");
+        softAssert.assertEquals(getPrivateCrocodileByIdResponse.getDateOfBirth(), createCrocodileRequest.getDateOfBirth(), "Date of birth didn't match");
         softAssert.assertAll();
     }
 
@@ -42,7 +45,7 @@ public class CrocodileAsserts extends TestBase {
         softAssert.assertAll();
     }
 
-    public void assertUpdateCrocodile (UpdateCrocodileResponse updateCrocodileResponse, CreateCrocodileRequest updateCrocodileRequest){
+    public void assertUpdateCrocodile (UpdateCrocodileResponse updateCrocodileResponse, UpdateCrocodileRequest updateCrocodileRequest){
         softAssert.assertEquals(updateCrocodileResponse.getName(), updateCrocodileRequest.getName(), "Name didn't match");
         softAssert.assertEquals(updateCrocodileResponse.getSex(), updateCrocodileRequest.getSex(), "Sex didn't match");
         softAssert.assertEquals(updateCrocodileResponse.getDateOfBirth(), updateCrocodileRequest.getDateOfBirth(), "Date if birth didn't match");

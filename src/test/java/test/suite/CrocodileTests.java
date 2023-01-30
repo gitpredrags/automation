@@ -7,31 +7,26 @@ import jdk.jfr.Description;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import test.asserts.CrocodileAsserts;
 import test.common.TestBase;
 
 public class CrocodileTests extends TestBase {
 
+    public static String publicID = "2";
+    public static String testId;
+
     public CrocodileAsserts crocodileAsserts = new CrocodileAsserts();
-    CreateCrocodileRequest createCrocodileRequest;
-    UpdateNameFieldRequest updateNameFieldRequest;
-
-
-   @BeforeMethod
-   public void prepareTestData() {
-       createCrocodileRequest = CrocodileProvider.createCrocodileRequest();
-       updateNameFieldRequest = CrocodileProvider.updateNameFieldRequest();
-   }
+    CreateCrocodileRequest createCrocodileRequest = CrocodileProvider.createCrocodileRequest();
+    UpdateCrocodileRequest updateCrocodileRequest = CrocodileProvider.updateCrocodileRequest();
+    UpdateNameFieldRequest updateNameFieldRequest = CrocodileProvider.updateNameFieldRequest();
 
    @BeforeClass
    public void createTestCrocodile() {
-       createCrocodileRequest = CrocodileProvider.createCrocodileRequest();
        CreateCrocodileResponse createCrocodileResponse = CrocodileAPI.createNewCrocodile(accessToken, createCrocodileRequest);
+
        testId = createCrocodileResponse.getId().toString();
    }
-
 
    @Test
    @Description("Public crocodile list")
@@ -40,7 +35,6 @@ public class CrocodileTests extends TestBase {
 
        crocodileAsserts.assertListOfPublicCrocodiles(getPublicCrocodileResponse);
    }
-
 
    @Test
    @Description("Public crocodile by ID test")
@@ -69,23 +63,15 @@ public class CrocodileTests extends TestBase {
     public void getPrivateCrocodileById(){
        GetPrivateCrocodileByIdResponse getPrivateCrocodileByIdResponse = CrocodileAPI.getPrivateCrocodileByIdResponse(testId, accessToken);
 
-        crocodileAsserts.assertPrivateCrocodileById(getPrivateCrocodileByIdResponse);
+        crocodileAsserts.assertPrivateCrocodileById(getPrivateCrocodileByIdResponse, createCrocodileRequest);
     }
-
-    /*@Test
-    @Description("Verify crocodile is created")
-    public void createCrocodileTest(){
-        CreateCrocodileResponse createCrocodileResponse = CrocodileAPI.createNewCrocodile(accessToken, createCrocodileRequest);
-
-        crocodileAsserts.assertCrocodileNewCrocodile(createCrocodileResponse, createCrocodileRequest);
-    }*/
 
     @Test
     @Description("Verify that crocodile is updated")
     public void updateCrocodileTest(){
-       UpdateCrocodileResponse updateCrocodileResponse = CrocodileAPI.updateCrocodile(testId, accessToken, createCrocodileRequest);
+       UpdateCrocodileResponse updateCrocodileResponse = CrocodileAPI.updateCrocodile(testId, accessToken, updateCrocodileRequest);
 
-       crocodileAsserts.assertUpdateCrocodile(updateCrocodileResponse, createCrocodileRequest);
+       crocodileAsserts.assertUpdateCrocodile(updateCrocodileResponse, updateCrocodileRequest);
     }
 
     @Test
@@ -96,18 +82,24 @@ public class CrocodileTests extends TestBase {
        crocodileAsserts.assertUpdateCrocodileName(updateNameFieldResponse, updateNameFieldRequest);
     }
 
+    @Test
+    @Description("delete")
+    public void deleteCrocodile() {
+        CreateCrocodileResponse createCrocodileResponse = CrocodileAPI.createNewCrocodile(accessToken, createCrocodileRequest);
+        String deleteId = createCrocodileResponse.getId().toString();
+        DeleteCrocodileResponse deleteCrocodileResponse = CrocodileAPI.deleteCrocodileResponse(deleteId, accessToken);
+
+        GetPrivateCrocodileResponse[] getPrivateCrocodileResponses = CrocodileAPI.getPrivateCrocodileResponses(accessToken);
+
+        crocodileAsserts.assertDeleteCrocodile(getPrivateCrocodileResponses);
+    }
     @AfterClass
     @Description("Delete crocodile")
-    public void deleteCrocodile(){
+    public void deleteAfterClassCrocodile(){
        DeleteCrocodileResponse deleteCrocodileResponse = CrocodileAPI.deleteCrocodileResponse(testId, accessToken);
 
        GetPrivateCrocodileResponse[] getPrivateCrocodileResponses = CrocodileAPI.getPrivateCrocodileResponses(accessToken);
 
        crocodileAsserts.assertDeleteCrocodile(getPrivateCrocodileResponses);
     }
-
-    /*@AfterClass
-    public void afterClass() {
-        DeleteTestCrocodileResponse deleteTestCrocodileResponse = CrocodileAPI.deleteTestCrocodileResponse("my/crocodiles/" + testId+  "/", accessToken);
-    }*/
 }

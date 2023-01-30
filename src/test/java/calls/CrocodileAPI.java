@@ -32,8 +32,8 @@ public class CrocodileAPI extends TestBase {
         return GsonFunctions.parseSuccessResponseToModel(RestAssuredFunctions.post(ApiEndpoints.PRIVATE_USERS, accessToken, createCrocodileRequest), CreateCrocodileResponse.class);
     }
 
-    public static UpdateCrocodileResponse updateCrocodile(String id, String accessToken, CreateCrocodileRequest createCrocodileRequest){
-        return GsonFunctions.parseSuccessResponseToModel(RestAssuredFunctions.put(ApiEndpoints.GET_PRIVATE_USER(id), accessToken, createCrocodileRequest), UpdateCrocodileResponse.class);
+    public static UpdateCrocodileResponse updateCrocodile(String id, String accessToken, UpdateCrocodileRequest updateCrocodileRequest){
+        return GsonFunctions.parseSuccessResponseToModel(RestAssuredFunctions.put(ApiEndpoints.GET_PRIVATE_USER(id), accessToken, updateCrocodileRequest), UpdateCrocodileResponse.class);
     }
 
     public static UpdateNameFieldResponse updateNameFieldResponse(String id, String accessToken, UpdateNameFieldRequest updateNameFieldRequest){

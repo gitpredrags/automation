@@ -10,11 +10,6 @@ public class TestBase {
 
     public String accessToken;
 
-    public String publicID = "2";
-
-    public static String testId;
-
-
     @BeforeClass
     public void beforeClass(){
         RestAssured.baseURI = ConfigSetup.getBaseUrl();

@@ -11,7 +11,7 @@ public class ValueChoosers {
         listOfSex.add("M");
         listOfSex.add("F");
 
-        return listOfSex.get(RandomUtils.nextInt(0, listOfSex.size()));
+        return listOfSex.get(RandomUtils.nextInt(0, listOfSex.size()-1));
     }
 
     public static String getRandomDate() {
@@ -22,6 +22,6 @@ public class ValueChoosers {
         listOfRandomDate.add("1932-07-11");
         listOfRandomDate.add("1980-11-13");
 
-        return listOfRandomDate.get(RandomUtils.nextInt(0, listOfRandomDate.size()));
+        return listOfRandomDate.get(RandomUtils.nextInt(0, listOfRandomDate.size()-1));
     }
 }

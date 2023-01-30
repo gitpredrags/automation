@@ -3,6 +3,7 @@ package data.provider;
 import com.github.javafaker.Faker;
 import common.ValueChoosers;
 import data.models.CreateCrocodileRequest;
+import data.models.UpdateCrocodileRequest;
 import data.models.UpdateNameFieldRequest;
 
 public class CrocodileProvider {
@@ -13,6 +14,14 @@ public class CrocodileProvider {
         createCrocodileRequest.setSex(ValueChoosers.getRandomSex());
         createCrocodileRequest.setDateOfBirth(ValueChoosers.getRandomDate());
         return createCrocodileRequest;
+    }
+
+    public static UpdateCrocodileRequest updateCrocodileRequest() {
+        UpdateCrocodileRequest updateCrocodileRequest = new UpdateCrocodileRequest();
+        updateCrocodileRequest.setName(Faker.instance().artist().name());
+        updateCrocodileRequest.setSex(ValueChoosers.getRandomSex());
+        updateCrocodileRequest.setDateOfBirth(ValueChoosers.getRandomDate());
+        return updateCrocodileRequest;
     }
 
 
