@@ -2,9 +2,9 @@ package data.provider;
 
 import com.github.javafaker.Faker;
 import common.ValueChoosers;
-import data.models.CreateCrocodileRequest;
-import data.models.UpdateCrocodileRequest;
-import data.models.UpdateNameFieldRequest;
+import data.models.crocodiles.CreateCrocodileRequest;
+import data.models.crocodiles.UpdateCrocodileRequest;
+import data.models.crocodiles.UpdateNameFieldRequest;
 
 public class CrocodileProvider {
 

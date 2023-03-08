@@ -1,7 +1,7 @@
 package test.suite;
 
 import calls.CrocodileAPI;
-import data.models.*;
+import data.models.crocodiles.*;
 import data.provider.CrocodileProvider;
 import jdk.jfr.Description;
 import org.testng.Assert;
@@ -94,7 +94,6 @@ public class CrocodileTests extends TestBase {
         crocodileAsserts.assertDeleteCrocodile(getPrivateCrocodileResponses);
     }
     @AfterClass
-    @Description("Delete crocodile")
     public void deleteAfterClassCrocodile(){
        DeleteCrocodileResponse deleteCrocodileResponse = CrocodileAPI.deleteCrocodileResponse(testId, accessToken);
 
