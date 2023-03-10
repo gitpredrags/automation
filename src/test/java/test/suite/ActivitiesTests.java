@@ -2,8 +2,10 @@ package test.suite;
 
 import calls.ActivitiesAPI;
 import data.models.activites.*;
+import data.models.common.EmptyResponse;
 import data.provider.ActivityProvider;
 import jdk.jfr.Description;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import test.asserts.ActivitiesAsserts;
@@ -16,14 +18,14 @@ public class ActivitiesTests extends TestBaseActivities {
     public static String deleteID;
     public ActivitiesAsserts activitiesAsserts = new ActivitiesAsserts();
 
-    CreateActivityRequest createActivityRequest = ActivityProvider.createActivityRequest();
-    UpdateActivityRequest updateActivityRequest = ActivityProvider.updateActivityRequest();
+    ActivityRequest createActivityRequest = ActivityProvider.createActivityRequest();
+    ActivityRequest updateActivityRequest = ActivityProvider.updateActivityRequest();
 
 
     @BeforeClass
     public void createActivity() {
-        CreateActivityResponse createActivityResponse = ActivitiesAPI.createActivityResponse(createActivityRequest);
-        activitiesAsserts.assertCreatedActivity(createActivityResponse, createActivityRequest);
+        ActivityResponse createActivityResponse = ActivitiesAPI.createActivityResponse(createActivityRequest);
+        activitiesAsserts.assertActivity(createActivityResponse, createActivityRequest);
 
         testID = ActivitiesAPI.getActivitiesResponses()[3].getId().toString();
     }
@@ -31,7 +33,7 @@ public class ActivitiesTests extends TestBaseActivities {
     @Test
     @Description("Get list of activities")
     public void getListOfActivities() {
-        GetActivitiesResponse[] getActivitiesResponses = ActivitiesAPI.getActivitiesResponses();
+        ActivityResponse[] getActivitiesResponses = ActivitiesAPI.getActivitiesResponses();
 
         activitiesAsserts.assertListOfActivities(getActivitiesResponses);
     }
@@ -39,7 +41,7 @@ public class ActivitiesTests extends TestBaseActivities {
     @Test
     @Description("Get activity by ID")
     public void getActivityById() {
-        GetActivityByIdResponse getActivityByIdResponse = ActivitiesAPI.getActivityByIdResponse(testID);
+        ActivityResponse getActivityByIdResponse = ActivitiesAPI.getActivityByIdResponse(testID);
 
         activitiesAsserts.assertGetById(getActivityByIdResponse);
     }
@@ -48,17 +50,25 @@ public class ActivitiesTests extends TestBaseActivities {
     @Description("Update activity")
     public void updateActivity() {
         updateId = updateActivityRequest.getId().toString();
-        UpdateActivityResponse updateActivityResponse = ActivitiesAPI.updateActivityResponse(updateId,updateActivityRequest);
+        ActivityResponse updateActivityResponse = ActivitiesAPI.updateActivityResponse(updateId,updateActivityRequest);
 
-        activitiesAsserts.assertUpdateActivity(updateActivityResponse, updateActivityRequest);
+        activitiesAsserts.assertActivity(updateActivityResponse, updateActivityRequest);
     }
 
     @Test
     @Description("Delete activity")
     public void deleteActivity() {
-        deleteID = ActivitiesAPI.getActivitiesResponses()[3].getId().toString();
-        DeleteActivityResponse deleteActivityResponse = ActivitiesAPI.deleteActivityResponse(deleteID);
-        GetActivitiesResponse[] getActivitiesResponse = ActivitiesAPI.getActivitiesResponses();
-        activitiesAsserts.assertDeleteActivity(getActivitiesResponse);
+        ActivityResponse createActivityResponse = ActivitiesAPI.createActivityResponse(createActivityRequest);
+        deleteID = createActivityResponse.getId().toString();
+        EmptyResponse deleteActivity = ActivitiesAPI.deleteActivityResponse(deleteID);
+        ActivityResponse[] getActivitiesResponses = ActivitiesAPI.getActivitiesResponses();
+        activitiesAsserts.assertDeleteActivity(getActivitiesResponses);
+    }
+
+    @AfterClass
+    public void deleteTestActivity() {
+        EmptyResponse deleteActivity = ActivitiesAPI.deleteActivityResponse(testID);
+        ActivityResponse[] getActivitiesResponses = ActivitiesAPI.getActivitiesResponses();
+        activitiesAsserts.assertDeleteActivity(getActivitiesResponses);
     }
 }
