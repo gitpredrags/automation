@@ -19,5 +19,12 @@ public class ApiEndpoints {
     public static final String ACTIVITIES = "api/v1/Activities/";
 
     public static String SINGLE_ACTIVITY (String id) {return ACTIVITIES + id + "/";}
+
+    //authors
+    public static final String AUTHORS = "api/v1/Authors/";
+
+    public static String SINGLE_BOOK (String id) {return AUTHORS + "authors/books/" + id;}
+
+    public static String SINGLE_AUTHOR (String id) {return AUTHORS + id + "/";}
 }
 
