@@ -2,6 +2,7 @@ package test.suite;
 
 import calls.ActivitiesAPI;
 import data.models.activites.*;
+import data.models.common.EmptyResponse;
 import data.provider.ActivityProvider;
 import jdk.jfr.Description;
 import org.testng.annotations.BeforeClass;
@@ -16,8 +17,8 @@ public class ActivitiesTests extends TestBaseActivities {
     public static String deleteID;
     public ActivitiesAsserts activitiesAsserts = new ActivitiesAsserts();
 
-    CreateActivityRequest createActivityRequest = ActivityProvider.createActivityRequest();
-    UpdateActivityRequest updateActivityRequest = ActivityProvider.updateActivityRequest();
+    ActivityRequest createActivityRequest = ActivityProvider.createActivityRequest();
+    ActivityRequest updateActivityRequest = ActivityProvider.updateActivityRequest();
 
 
     @BeforeClass
@@ -57,7 +58,7 @@ public class ActivitiesTests extends TestBaseActivities {
     @Description("Delete activity")
     public void deleteActivity() {
         deleteID = ActivitiesAPI.getActivitiesResponses()[3].getId().toString();
-        DeleteActivityResponse deleteActivityResponse = ActivitiesAPI.deleteActivityResponse(deleteID);
+        EmptyResponse deleteActivityResponse = ActivitiesAPI.deleteActivityResponse(deleteID);
         GetActivitiesResponse[] getActivitiesResponse = ActivitiesAPI.getActivitiesResponses();
         activitiesAsserts.assertDeleteActivity(getActivitiesResponse);
     }

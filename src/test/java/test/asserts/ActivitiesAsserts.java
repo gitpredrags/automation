@@ -15,7 +15,7 @@ public class ActivitiesAsserts extends TestBaseActivities {
         softAssert.assertAll();
     }
 
-    public void assertCreatedActivity (CreateActivityResponse createActivityResponse, CreateActivityRequest createActivityRequest) {
+    public void assertCreatedActivity (CreateActivityResponse createActivityResponse, ActivityRequest createActivityRequest) {
         softAssert.assertEquals(createActivityResponse.getId(), createActivityRequest.getId(), "ID doesn't match");
         softAssert.assertEquals(createActivityResponse.getTitle(), createActivityRequest.getTitle(), "Title doesn't match");
         softAssert.assertEquals(createActivityResponse.getDueDate(), createActivityRequest.getDueDate(), "Due date doesn't match");
@@ -31,7 +31,7 @@ public class ActivitiesAsserts extends TestBaseActivities {
         softAssert.assertAll();
     }
 
-    public void assertUpdateActivity (UpdateActivityResponse updateActivityResponse, UpdateActivityRequest updateActivityRequest){
+    public void assertUpdateActivity (UpdateActivityResponse updateActivityResponse, ActivityRequest updateActivityRequest){
         softAssert.assertEquals(updateActivityResponse.getId(), updateActivityRequest.getId(), "ID doesn't match");
         softAssert.assertEquals(updateActivityResponse.getCompleted(), updateActivityRequest.getCompleted(), "Completed status doesn't match");
         softAssert.assertEquals(updateActivityResponse.getDueDate(), updateActivityRequest.getDueDate(), "Due date doesn't match");
