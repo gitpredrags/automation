@@ -25,10 +25,7 @@ public class ActivitiesAsserts extends TestBaseActivities {
     }
 
     public void assertGetById (ActivityResponse getActivityByIdResponse){
-        softAssert.assertEquals(getActivityByIdResponse.getId(), getActivityByIdResponse.getId(), "ID doesn't match");
-        softAssert.assertEquals(getActivityByIdResponse.getTitle(), getActivityByIdResponse.getTitle(), "Title doesn't match");
-        softAssert.assertEquals(getActivityByIdResponse.getDueDate(), getActivityByIdResponse.getDueDate(), "Due date doesn't match");
-        softAssert.assertEquals(getActivityByIdResponse.getCompleted(), getActivityByIdResponse.getCompleted(), "Completed status doesn't match");
+        softAssert.assertEquals(getActivityByIdResponse.getId().toString(), ActivitiesTests.testID, "ID doesn't match");
         softAssert.assertAll();
     }
 
