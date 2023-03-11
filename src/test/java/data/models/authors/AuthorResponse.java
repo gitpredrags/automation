@@ -4,7 +4,7 @@ import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class GetAuthorsResponse implements Serializable
+public class AuthorResponse implements Serializable
 {
 
     @SerializedName("id")
@@ -19,12 +19,12 @@ public class GetAuthorsResponse implements Serializable
     @SerializedName("lastName")
     @Expose
     private String lastName;
-    private final static long serialVersionUID = 6913605956110553921L;
+    private final static long serialVersionUID = 2435837008294836191L;
 
-    public GetAuthorsResponse() {
+    public AuthorResponse() {
     }
 
-    public GetAuthorsResponse(Integer id, Integer idBook, String firstName, String lastName) {
+    public AuthorResponse(Integer id, Integer idBook, String firstName, String lastName) {
         super();
         this.id = id;
         this.idBook = idBook;

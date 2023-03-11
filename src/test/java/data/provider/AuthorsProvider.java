@@ -2,13 +2,12 @@ package data.provider;
 
 import com.github.javafaker.Faker;
 import common.ValueChoosers;
-import data.models.authors.CreateAuthorRequest;
-import data.models.authors.UpdateAuthorRequest;
+import data.models.authors.AuthorRequest;
 
 public class AuthorsProvider {
 
-    public static CreateAuthorRequest createAuthorRequest() {
-        CreateAuthorRequest createAuthorRequest = new CreateAuthorRequest();
+    public static AuthorRequest createAuthorRequest() {
+        AuthorRequest createAuthorRequest = new AuthorRequest();
         createAuthorRequest.setId(ValueChoosers.getRandomId());
         createAuthorRequest.setFirstName(Faker.instance().dragonBall().character());
         createAuthorRequest.setLastName(Faker.instance().funnyName().name());
@@ -16,8 +15,8 @@ public class AuthorsProvider {
         return createAuthorRequest;
     }
 
-    public static UpdateAuthorRequest updateAuthorRequest(){
-        UpdateAuthorRequest updateAuthorRequest = new UpdateAuthorRequest();
+    public static AuthorRequest updateAuthorRequest(){
+        AuthorRequest updateAuthorRequest = new AuthorRequest();
         updateAuthorRequest.setId(ValueChoosers.getRandomId());
         updateAuthorRequest.setFirstName(Faker.instance().funnyName().name());
         updateAuthorRequest.setLastName(Faker.instance().backToTheFuture().character());
