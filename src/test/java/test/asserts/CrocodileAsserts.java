@@ -1,6 +1,6 @@
 package test.asserts;
 
-import data.models.*;
+import data.models.crocodiles.*;
 import org.testng.asserts.SoftAssert;
 import test.common.TestBase;
 import test.suite.CrocodileTests;

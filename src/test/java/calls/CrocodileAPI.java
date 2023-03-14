@@ -3,7 +3,7 @@ package calls;
 import common.GsonFunctions;
 import common.RestAssuredFunctions;
 import constants.ApiEndpoints;
-import data.models.*;
+import data.models.crocodiles.*;
 import test.common.TestBase;
 
 public class CrocodileAPI extends TestBase {

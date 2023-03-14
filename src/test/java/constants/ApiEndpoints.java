@@ -14,4 +14,10 @@ public class ApiEndpoints {
     public static String GET_PRIVATE_USER (String id) {
         return PRIVATE_USERS + id + "/";
     }
+
+    //activities
+    public static final String ACTIVITIES = "api/v1/Activities/";
+
+    public static String SINGLE_ACTIVITY (String id) {return ACTIVITIES + id + "/";}
 }
+

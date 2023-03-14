@@ -1,7 +1,7 @@
 package test.common;
 
 import calls.CrocodileAPI;
-import data.models.*;
+import data.models.crocodiles.LoginRequest;
 import environment.ConfigSetup;
 import io.restassured.RestAssured;
 import org.testng.annotations.BeforeClass;
