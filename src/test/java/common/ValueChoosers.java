@@ -3,7 +3,6 @@ package common;
 import org.apache.commons.lang3.RandomUtils;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class ValueChoosers {
 

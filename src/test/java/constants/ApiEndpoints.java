@@ -26,5 +26,10 @@ public class ApiEndpoints {
     public static String SINGLE_BOOK (String id) {return AUTHORS + "authors/books/" + id;}
 
     public static String SINGLE_AUTHOR (String id) {return AUTHORS + id + "/";}
+
+    //books
+    public static final String BOOKS = "api/v1/Books/";
+
+    public static String BOOK (String id) {return BOOKS + id + "/";}
 }
 
