@@ -31,5 +31,10 @@ public class ApiEndpoints {
     public static final String BOOKS = "api/v1/Books/";
 
     public static String BOOK (String id) {return BOOKS + id + "/";}
+
+    //users
+    public static final String USERS2 = "api/v1/Users/";
+
+    public static String SINGLE_USER2 (String id) {return USERS2 + id + "/";}
 }
 
