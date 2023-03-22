@@ -42,7 +42,7 @@ public class BooksTests extends TestBaseBooks {
     @Description("Get book by ID")
     public void getBookById() {
         bookId = ValueChoosers.getRandomBookId();
-        BookResponse[] getBookByIdResponse = BooksAPI.getBookByIdResponse(bookId);
+        BookResponse getBookByIdResponse = BooksAPI.getBookByIdResponse(bookId);
         booksAsserts.assertBookById(getBookByIdResponse);
     }
 

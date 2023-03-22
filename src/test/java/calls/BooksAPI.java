@@ -18,8 +18,8 @@ public class BooksAPI extends TestBaseBooks {
         return GsonFunctions.parseSuccessResponseToModel(RestAssuredFunctions.post(ApiEndpoints.BOOKS,createBookRequest), BookResponse.class);
     }
 
-    public static BookResponse[] getBookByIdResponse(String id){
-        return GsonFunctions.parseSuccessResponseToModel(RestAssuredFunctions.get(ApiEndpoints.BOOK(id)), BookResponse[].class);
+    public static BookResponse getBookByIdResponse(String id){
+        return GsonFunctions.parseSuccessResponseToModel(RestAssuredFunctions.get(ApiEndpoints.BOOK(id)), BookResponse.class);
     }
 
     public  static BookResponse updateBookResponse (String id, BookRequest updateBookRequest){

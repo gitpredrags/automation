@@ -25,10 +25,8 @@ public class BooksAsserts {
         softAssert.assertAll();
     }
 
-    public void assertBookById(BookResponse[] getBookByIdResponse){
-        for (int i = 1; i <getBookByIdResponse.length; i++){
-            softAssert.assertEquals(getBookByIdResponse[i].getId().toString(), BooksTests.testId, "ID doesn't match");
-        }
+    public void assertBookById(BookResponse getBookByIdResponse){
+        softAssert.assertEquals(getBookByIdResponse.getId().toString(), BooksTests.testId, "ID doesn't match");
         softAssert.assertAll();
     }
 
