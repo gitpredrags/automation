@@ -48,6 +48,16 @@ public class ValueChoosers {
         return listOfRandomIds.get(RandomUtils.nextInt(0, listOfRandomIds.size()-1));
     }
 
+    public static String getRandomBookId() {
+        ArrayList<String> listOfRandomBookIds = new ArrayList<>();
+        listOfRandomBookIds.add ("2");
+        listOfRandomBookIds.add ("22");
+        listOfRandomBookIds.add ("19");
+        listOfRandomBookIds.add ("72");
+
+        return listOfRandomBookIds.get(RandomUtils.nextInt(0, listOfRandomBookIds.size()-1));
+    }
+
     public static String getRandomDueDate() {
         ArrayList<String> listOfRandomDueDates = new ArrayList<>();
         listOfRandomDueDates.add ("2023-08-23T13:15:42.5586");
