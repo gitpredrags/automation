@@ -31,5 +31,17 @@ public class ApiEndpoints {
     public static final String BOOKS = "api/v1/Books/";
 
     public static String BOOK (String id) {return BOOKS + id + "/";}
+
+    //users
+    public static final String USERS2 = "api/v1/Users/";
+
+    public static String SINGLE_USER2 (String id) {return USERS2 + id + "/";}
+
+    //coverPhotos
+    public static final String COVER_PHOTOS = "api/v1/CoverPhotos/";
+
+    public static String SINGLE_COVER_PHOTO (String id) {return COVER_PHOTOS + id + "/";}
+
+    public static String SINGLE_BOOK_COVER_PHOTO (String id) {return COVER_PHOTOS + "books/covers/" + id;}
 }
 
